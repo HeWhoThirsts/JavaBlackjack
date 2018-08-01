@@ -1,13 +1,13 @@
 import javax.swing.ImageIcon;
 
 public class card {
-	private final static ImageIcon back = new ImageIcon(Blackjack2.class.getResource("/assets/back@2x.png"));
+	private final static ImageIcon back = new ImageIcon(BlackjackMain.class.getResource("/assets/back@2x.png"));
 	private ImageIcon face;
 	private int value;
 	private boolean flipped;
 	
 	public card(String imageName) {
-		face = new ImageIcon(Blackjack2.class.getResource("/assets/"+imageName));
+		face = new ImageIcon(BlackjackMain.class.getResource("/assets/"+imageName));
 		int test = imageName.indexOf('_');
 		value = Integer.parseInt(imageName.substring(0, imageName.indexOf('_')));
 		flipped = true;

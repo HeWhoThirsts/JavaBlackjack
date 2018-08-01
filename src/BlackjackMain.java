@@ -17,7 +17,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 
-public class Blackjack2 extends JFrame {
+public class BlackjackMain extends JFrame {
 	public static int hand = 0;
 	private JPanel contentPane;
 	private JTextField txtDeckinput;
@@ -29,7 +29,7 @@ public class Blackjack2 extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Blackjack2 frame = new Blackjack2();
+					BlackjackMain frame = new BlackjackMain();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -61,7 +61,7 @@ public class Blackjack2 extends JFrame {
 	protected ArrayList<JButton> btn;
 	protected ArrayList<JLabel> ls;
 	protected DeckOfCards d;
-	public Blackjack2() {
+	public BlackjackMain() {
 		setTitle("BLACKJACK");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 920, 1051);
