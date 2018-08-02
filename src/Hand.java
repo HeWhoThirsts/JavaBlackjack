@@ -46,6 +46,11 @@ public class Hand {
 	public int numCards() {
 		return h.size();
 	}
+	public void up() {
+		for(int i = 0; i < h.size();i++) {
+			h.get(i).up();
+		}
+	}
 	public ArrayList<card> getAll(){
 		return h;
 	}

@@ -64,7 +64,7 @@ public class BlackjackMain extends JFrame {
 	public BlackjackMain() {
 		setTitle("BLACKJACK");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 920, 1051);
+		setBounds(100, 100, 935, 1051);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -163,7 +163,6 @@ public class BlackjackMain extends JFrame {
 				if(btnBuy.isEnabled()&&h.get(hand).hValue()<21) {
 					h.get(hand).draw(1);
 					displayHand();
-					CheckScore();
 					
 				}
 
@@ -252,7 +251,7 @@ public class BlackjackMain extends JFrame {
 			}
 		});
 		btnStart.setEnabled(false);
-		btnStart.setBounds(0, 295, 97, 25);
+		btnStart.setBounds(0, 295, 107, 25);
 		panel.add(btnStart);
 
 		txtDeckinput = new JTextField();
@@ -316,7 +315,7 @@ public class BlackjackMain extends JFrame {
 
 		lblPlayer = new JLabel("You");
 		lblPlayer.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblPlayer.setBounds(0, 0, 193, 16);
+		lblPlayer.setBounds(0, 0, 205, 16);
 		panel.add(lblPlayer);
 		
 		btnNextGame = new JButton("Next Game");
@@ -333,7 +332,9 @@ public class BlackjackMain extends JFrame {
 
 	}
 	private void displayHand() {
-		
+		for(int i = 0; i < h.size();i++)
+			if(h.get(i).playerCont)
+			h.get(i).up();
 		try {
 			if(h.get(hand).get(0).val() == h.get(hand).get(1).val()&&h.get(0).numCards()==2&&h.get(hand).playerCont) {
 				btnSplit.setEnabled(true);
@@ -377,8 +378,8 @@ public class BlackjackMain extends JFrame {
 		
 	}
 	private void dealerAi() throws InterruptedException {
+		h.get(1).flip(1);
 		boolean stop = false;
-		h.get(1).get(1).flip();
 		while(!stop) {
 			if(h.get(1).hValue()==21) {
 				stop = true;
@@ -421,8 +422,7 @@ public class BlackjackMain extends JFrame {
 		}
 		for(int i = 2; i<h.size();i++)
 				h.remove(i);
-		for(int i = 0;i<d.getDeck().size();i++)
-			d.getDeck().get(i).up();
+		card.flipAll();
 		h.get(0).draw(2);
 		h.get(1).draw(2);
 		h.get(1).get(1).flip();
